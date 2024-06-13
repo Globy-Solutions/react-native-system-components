@@ -1,5 +1,5 @@
 {
-  "name": "globy-solutions-react-native-system-components",
+  "name": "@globy-solutions/react-native-system-components",
   "version": "0.0.3",
   "main": "index.ts",
   "license": "MIT",
@@ -14,7 +14,7 @@
   ],
   "author": {
     "name": "Globy Solutions",
-    "email": "dev@globy-solutions.tech",
+    "email": "yo@faucndo-cachan.dev",
     "url": "https://globy-solutions.tech",
     "organization": "Globy Solutions",
     "social": {
@@ -27,10 +27,10 @@
       "youtube": ""
     }
   },
-  "homepage": "https://github.com/Globy-Solutions/system-components",
-  "bugs": "https://github.com/Globy-Solutions/system-components/issues",
+  "homepage": "https://github.com/Globy-Solutions/react-native-system-components",
+  "bugs": "https://github.com/Globy-Solutions/react-native-system-components/issues",
   "repository": {
-    "url": "https://github.com/Globy-Solutions/system-components",
+    "url": "https://github.com/Globy-Solutions/react-native-system-components",
     "type": "git"
   },
   "packageManager": "yarn@1.22.22",

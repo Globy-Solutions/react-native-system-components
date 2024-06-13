@@ -5,17 +5,26 @@ on:
   pull_request:
     branches: [development]
 jobs:
-  jest:
+  eslint:
+    name: Run jest scanning
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.13.0]
+    permissions:
+      contents: read
+      security-events: write
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: |
-          npm install
-          npm test
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Jest
+        run: npm run test -u
+        continue-on-error: true
+
+      - name: Check for modified files
+        id: git-check
+        run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
+
+      - name: Push changes
+        if: steps.git-check.outputs.modified == 'true'
+        run: |
+          git commit -am "Automated changes- Jest"
+          git push

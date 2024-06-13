@@ -5,14 +5,17 @@ on:
   pull_request:
     branches: [development]
 jobs:
-  prettier:
+  eslint:
+    name: Run prettier scanning
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Run prettier
+      - name: Run Prettier
         run: npm run format
         continue-on-error: true
 
@@ -23,6 +26,5 @@ jobs:
       - name: Push changes
         if: steps.git-check.outputs.modified == 'true'
         run: |
-          git add .
           git commit -am "Automated changes- Prettier"
           git push
