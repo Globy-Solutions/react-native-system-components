@@ -1,20 +1,27 @@
-name: Build Docker Container
+name: Node CI
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
-  docker:
+  build_and_test:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      -
-        name: Build and push
-        uses: docker/build-push-action@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: npm install, build, and test
+        run: |
+          npm install
+          npm run build --if-present
+          npm test
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v4
         with:
-          push: true
-          tags: simplecloudquestions/example_docker:late
+          name: dist-without-markdown
+          path: |
+            dist
+            !dist/**/*.md
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-coverage-report
+          path: output/test/code-coverage.html
