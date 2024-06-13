@@ -1,0 +1,8 @@
+.DS_Store
+settings.json
+# __test__/**/*/*.test.ts?.snap
+
+node_modules/
+.yarn/
+.jest/
+coverage/
