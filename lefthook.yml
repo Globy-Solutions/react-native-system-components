@@ -3,10 +3,13 @@ pre-commit:
   commands:
     lint:
       glob: '*.{ts?}'
-      run: npx eslint {staged_files}
-    types:
+      run: yarn lint {staged_files}
+    typecheck:
       glob: '*.{ts?}'
-      run: npx tsc --noEmit
+      run: yarn typecheck {staged_files}
+    format:
+      glob: '*.{ts?}'
+      run: yarn format {staged_files}
 commit-msg:
   parallel: true
   commands:
