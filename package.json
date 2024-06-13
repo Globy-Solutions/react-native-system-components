@@ -48,7 +48,6 @@
     "ios": "react-native run-ios"
   },
   "dependencies": {
-    "@globy-solutions": "ssh://git@github.com/Globy-Solutions/react-native-system-core.git",
     "react-native-vector-icons": "^10.1.0",
     "react-native": "^0.74.1",
     "react": "^18.3.1",

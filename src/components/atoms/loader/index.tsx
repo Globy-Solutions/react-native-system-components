@@ -1,4 +1,4 @@
-import { ActivityIndicator } from 'react-native';
+import {ActivityIndicator} from 'react-native';
 import styles from './styles';
 
 const Loader = (): JSX.Element => {
