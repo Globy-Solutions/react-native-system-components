@@ -1,9 +1,9 @@
 name: Prettier
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [development]
 jobs:
   prettier:
     runs-on: ubuntu-latest
