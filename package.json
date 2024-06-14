@@ -33,6 +33,9 @@
     "type": "git"
   },
   "packageManager": "yarn@1.22.22",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "release": "release-it",
     "typecheck": "tsc --pretty --noEmit",
