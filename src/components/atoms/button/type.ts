@@ -1,7 +1,7 @@
 import type {TextStyle, ViewStyle} from 'react-native';
 import type {PressableProps} from 'react-native/Libraries/Components/Pressable/Pressable';
 
-interface ButtonProps extends PressableProps {
+export interface ButtonProps extends PressableProps {
   title: string;
   style?: ViewStyle | ViewStyle[];
   styleText?: TextStyle;
@@ -9,5 +9,3 @@ interface ButtonProps extends PressableProps {
   loading?: boolean;
   onPress: PressableProps['onPress'];
 }
-
-export default ButtonProps;

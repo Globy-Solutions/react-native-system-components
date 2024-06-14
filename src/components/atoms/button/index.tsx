@@ -6,13 +6,19 @@
  */
 
 import {Pressable, Text} from 'react-native';
+import styles from './styles';
 
-import type ButtonProps from './type';
+import type {ButtonProps} from './type';
 
-const Button = ({onPress, title}: ButtonProps): JSX.Element => {
+const Button = ({
+  onPress,
+  title,
+  style,
+  styleText
+}: ButtonProps): JSX.Element => {
   return (
-    <Pressable onPress={onPress}>
-      <Text>{title}</Text>
+    <Pressable onPress={onPress} style={[styles.common, style]}>
+      <Text style={[styles.text, styleText]}>{title}</Text>
     </Pressable>
   );
 };

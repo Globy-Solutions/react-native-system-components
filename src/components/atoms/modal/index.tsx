@@ -1,85 +1,61 @@
+/**
+ * Renders a modal component.
+ *
+ * @param {object} props - The component props.
+ * @param {ReactNode} props.children - The content to be rendered inside the modal.
+ * @param {StyleProp<ViewStyle>} props.style - The custom styles to be applied to the modal.
+ * @param {boolean} props.show - Determines whether the modal should be visible or not.
+ * @param {() => void} props.onClose - The function to be called when the modal is closed.
+ * @param {() => void} props.onShow - The function to be called when the modal is shown.
+ * @returns {JSX.Element} The rendered modal component.
+ */
+
 import {useState} from 'react';
-import {
-  Alert,
-  Pressable,
-  Modal as RNModal,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import {Alert, Modal as RNModal, View} from 'react-native';
 
-const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF'
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3'
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center'
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center'
-  }
-});
+import Button from '../button';
+import styles from './styles';
 
-const Modal = (): JSX.Element => {
-  const [modalVisible, setModalVisible] = useState(false);
+import type {ViewProps} from 'react-native';
+
+type ModalProps = {
+  children: JSX.Element | JSX.Element[];
+  show?: boolean;
+  style?: ViewProps;
+  onClose?: () => void;
+  onShow?: () => void;
+};
+
+const Modal = ({
+  children,
+  style,
+  show,
+  onClose,
+  onShow
+}: ModalProps): JSX.Element => {
+  const [modalVisible, setModalVisible] = useState<boolean>(show || false);
+  const showModal = () => {
+    onClose && onClose();
+    setModalVisible(!modalVisible);
+  };
+
   return (
     <View style={styles.centeredView}>
       <RNModal
+        testID="modal"
         animationType="slide"
         transparent={true}
         visible={modalVisible}
+        onShow={onShow}
         onRequestClose={() => {
           Alert.alert('Modal has been closed.');
-          setModalVisible(!modalVisible);
+          showModal();
         }}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>
-          </View>
+        <View style={[style, styles.modalView]}>
+          {children}
+          <Button title="Hide Modal" onPress={showModal} />
         </View>
       </RNModal>
-      <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </Pressable>
     </View>
   );
 };

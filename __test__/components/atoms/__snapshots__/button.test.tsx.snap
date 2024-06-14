@@ -31,8 +31,37 @@ exports[`Button Match Snapshot 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  style={
+    [
+      {
+        "borderColor": "black",
+        "borderRadius": 10,
+        "borderWidth": 1,
+        "elevation": 5,
+        "padding": 10,
+        "shadowColor": "#000",
+        "shadowOffset": {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0.25,
+        "shadowRadius": 4,
+      },
+      undefined,
+    ]
+  }
 >
-  <Text>
+  <Text
+    style={
+      [
+        {
+          "fontSize": 16,
+          "textAlign": "center",
+        },
+        undefined,
+      ]
+    }
+  >
     Test Button
   </Text>
 </View>

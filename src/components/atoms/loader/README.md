@@ -2,16 +2,12 @@
 
 Globy Solutions - React Native System Components
 
-## Installation
-
-```sh
-yarn add @globy-solutions/react-native-system-components
-```
-
-## Usage
+## Loader implementation
 
 ```js
-import { Button } from '@globy-solutions/react-native-system-components';
+import { Loader } from '@globy-solutions/react-native-system-components';
+
+<Loader color="#f6cc" size="large" />
 ```
 
 ## Contributing

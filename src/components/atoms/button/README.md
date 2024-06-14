@@ -2,16 +2,12 @@
 
 Globy Solutions - React Native System Components
 
-## Installation
-
-```sh
-yarn add @globy-solutions/react-native-system-components
-```
-
-## Usage
+## Button implementation
 
 ```js
 import { Button } from '@globy-solutions/react-native-system-components';
+
+<Button title="Show Modal" onPress={() => {}} style={{}} styleText={{}} />
 ```
 
 ## Contributing

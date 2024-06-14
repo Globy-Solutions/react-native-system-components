@@ -1,7 +1,7 @@
 import {fireEvent, screen} from '@testing-library/react-native';
 
-import {Button} from '../../';
-import {render} from '../utils/customRender';
+import {Button} from '../../../';
+import {render} from '../../utils/customRender';
 
 const onPressMock = jest.fn();
 const defaultProps = {
@@ -17,8 +17,8 @@ describe('Button', () => {
     global.fetch = jest.fn().mockResolvedValue({
       json: () => Promise.resolve([])
     });
-    render(<Btn />);
-    buttonElement = screen.getByText(defaultProps.title);
+    const {getByText} = render(<Btn />);
+    buttonElement = getByText(defaultProps.title);
   });
   test('Match Snapshot', () => {
     expect(screen).toMatchSnapshot();

@@ -1,5 +1,5 @@
 {
-  // "extends": "@react-native/typescript-config/tsconfig.json",
+  "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
     "module": "Node16",
     "rootDir": ".",
@@ -55,7 +55,7 @@
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "esModuleInterop": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "lib": [
       "esnext"
     ],
@@ -71,5 +71,10 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext"
-  }
+  },
+  "exclude": [
+    "lib",
+    "node_modules",
+    "build"
+  ]
 }
